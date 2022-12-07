@@ -1877,19 +1877,6 @@ For more details see https://github.com/semanticchemistry/semanticchemistry/issu
     
 
 
-    <!-- http://semanticscience.org/resource/CHEMINF_000517 -->
-
-    <owl:Class rdf:about="&resource;CHEMINF_000517">
-        <rdfs:label>NInChI descriptor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&resource;CHEMINF_000085"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="&resource;CHEMINF_000266"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <dc:description>An InChI-like descriptor for nanomaterials.</dc:description>
-    </owl:Class>
 
 
 
