@@ -1868,21 +1868,11 @@ AutoID - digit count = 6, prefix = CHEMINF_</rdfs:comment>
     <!-- http://semanticscience.org/resource/CHEMINF_000113 -->
 
     <owl:Class rdf:about="&resource;CHEMINF_000113">
-        <rdfs:label>InChI descriptor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&resource;CHEMINF_000085"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="&obo;CHEBI_23367"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&resource;CHEMINF_000047"/>
-                <owl:someValuesFrom rdf:resource="&resource;CHEMINF_000038"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <dc:description>An InChI descriptor is a structure descriptor which conforms to the InChI format specification.</dc:description>
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;InChI descriptor&quot; (CHEMINF:000113) has been deprecated and replaced with &quot;InChI descriptor&quot; (CHEMINF:002930) under &quot;identifying descriptor&quot; (CHEMINF:000061).
+For more details see https://github.com/semanticchemistry/semanticchemistry/issues/57.</rdfs:comment>
+        <rdfs:label>DEPRECATED InChI descriptor</rdfs:label>
+        <rdfs:seeAlso rdf:resource="&resource;CHEMINF_002930"/>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
     </owl:Class>
     
 
@@ -4815,12 +4805,12 @@ The formal charge of any atom in a molecule can be calculated by the following e
     <!-- http://semanticscience.org/resource/CHEMINF_000524 -->
 
     <owl:Class rdf:about="&resource;CHEMINF_000524">
-        <rdfs:subClassOf rdf:resource="&resource;CHEMINF_000113"/>
-        <dc:creator rdf:resource="http://orcid.org/0000-0002-4378-6061"/>
-        <dc:date rdf:datatype="&xsd;dateTime">2022-07-11T08:22:02Z</dc:date>
-        <dc:description rdf:datatype="&xsd;string">An InChI descriptor that is not the standard and that is created with the fixedH layer option. The fixedH layer is appended to the standard InChI and lists the exact position of the tautomeric hydrogen atoms. It is useful when one wants to represent a specific tautomer of a given structure, because if the InChIs for the tautomers were created without the fixedH layer option, the normalization performed by the InChI generation program would result in these InChIs being identical.</dc:description>
-        <dc:source rdf:datatype="&xsd;anyURI">https://doi.org/10.1186%2Fs13321-015-0068-4</dc:source>
-        <rdfs:label xml:lang="en">InChI with fixedH layer</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string">Initial parent class &quot;InChI descriptor&quot; (CHEMINF:000113) has been deprecated and replaced with &quot;InChI descriptor&quot; (CHEMINF:002930) under &quot;identifying descriptor&quot; (CHEMINF:000061).
+For more details see https://github.com/semanticchemistry/semanticchemistry/issues/57.</rdfs:comment>
+        <rdfs:label xml:lang="en">DEPRECATED InChI with fixedH layer</rdfs:label>
+        <rdfs:seeAlso rdf:resource="&resource;CHEMINF_002931"/>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+    </owl:Class>
     </owl:Class>
 
 
@@ -4843,6 +4833,30 @@ The formal charge of any atom in a molecule can be calculated by the following e
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description>Descriptor that calculates the sum of the absolute value of the difference between atomic polarizabilities of all bonded atoms in the molecule (including implicit hydrogens).</dc:description>
+    
+
+
+    <!-- http://semanticscience.org/resource/CHEMINF_002930 -->
+
+    <owl:Class rdf:about="&resource;CHEMINF_002930">
+        <rdfs:subClassOf rdf:resource="&resource;CHEMINF_000061"/>
+        <dc:creator rdf:resource="http://orcid.org/0000-0002-4378-6061"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2022-12-07T11:38:56Z</dc:date>
+        <dc:description>An InChI descriptor is an identifying descriptor which conforms to the InChI format specification.</dc:description>
+        <rdfs:label xml:lang="en">InChI descriptor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://semanticscience.org/resource/CHEMINF_002931 -->
+
+    <owl:Class rdf:about="&resource;CHEMINF_002931">
+        <rdfs:subClassOf rdf:resource="&resource;CHEMINF_002930"/>
+        <dc:creator rdf:resource="http://orcid.org/0000-0002-4378-6061"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2022-12-07T11:55:49Z</dc:date>
+        <dc:description rdf:datatype="&xsd;string">An InChI descriptor that is not the standard and that is created with the fixedH layer option. The fixedH layer is appended to the standard InChI and lists the exact position of the tautomeric hydrogen atoms. It is useful when one wants to represent a specific tautomer of a given structure, because if the InChIs for the tautomers were created without the fixedH layer option, the normalization performed by the InChI generation program would result in these InChIs being identical.</dc:description>
+        <dc:source rdf:datatype="&xsd;anyURI">https://doi.org/10.1186%2Fs13321-015-0068-4</dc:source>
+        <rdfs:label xml:lang="en">InChI with fixedH layer</rdfs:label>
     </owl:Class>
     
 
