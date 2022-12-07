@@ -4718,6 +4718,21 @@ The formal charge of any atom in a molecule can be calculated by the following e
         <rdfs:subClassOf rdf:resource="&resource;CHEMINF_000123"/>
     <owl:Class rdf:about="http://semanticscience.org/resource/CHEMINF_000517">
         <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/CHEMINF_000061"/>
+    
+
+
+    <!-- http://semanticscience.org/resource/CHEMINF_000517 -->
+
+    <owl:Class rdf:about="&resource;CHEMINF_000517">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;NInChI descriptor&quot; (CHEMINF:000517) should be subsumed under &quot;identifying descriptors&quot; (CHEMINF:000061) rather than under &quot;structural descriptors&quot; (CHEMINF:000085), analogy with &quot;InChI descriptor&quot; (CHEMINF:000113)
+For more details see https://github.com/semanticchemistry/semanticchemistry/issues/57.</rdfs:comment>
+        <rdfs:label>DEPRECATED NInChI descriptor</rdfs:label>
+        <rdfs:seeAlso rdf:resource="&resource;CHEMINF_002932"/>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+    </owl:Class>
+    
+
+
     </owl:Class>
     
 
@@ -4857,6 +4872,18 @@ For more details see https://github.com/semanticchemistry/semanticchemistry/issu
         <dc:description rdf:datatype="&xsd;string">An InChI descriptor that is not the standard and that is created with the fixedH layer option. The fixedH layer is appended to the standard InChI and lists the exact position of the tautomeric hydrogen atoms. It is useful when one wants to represent a specific tautomer of a given structure, because if the InChIs for the tautomers were created without the fixedH layer option, the normalization performed by the InChI generation program would result in these InChIs being identical.</dc:description>
         <dc:source rdf:datatype="&xsd;anyURI">https://doi.org/10.1186%2Fs13321-015-0068-4</dc:source>
         <rdfs:label xml:lang="en">InChI with fixedH layer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://semanticscience.org/resource/CHEMINF_002932 -->
+
+    <owl:Class rdf:about="&resource;CHEMINF_002932">
+        <rdfs:subClassOf rdf:resource="&resource;CHEMINF_000061"/>
+        <dc:creator rdf:resource="http://orcid.org/0000-0002-4378-6061"/>
+        <dc:date rdf:datatype="&xsd;dateTime">2022-12-07T12:33:08Z</dc:date>
+        <dc:description>An InChI-like descriptor for nanomaterials.</dc:description>
+        <rdfs:label xml:lang="en">NInChI descriptor</rdfs:label>
     </owl:Class>
     
 
