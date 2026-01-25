@@ -20,6 +20,7 @@ Prefix(ontologies:=<http://www.semanticweb.org/ontologies/>)
 Ontology(<http://semanticscience.org/ontology/cheminf.owl>
 Import(<http://semanticscience.org/ontology/cheminf/imports/bfo_import.owl>)
 Import(<http://semanticscience.org/ontology/cheminf/imports/chebi_import.owl>)
+Import(<http://semanticscience.org/ontology/cheminf/imports/go_import.owl>)
 Import(<http://semanticscience.org/ontology/cheminf/imports/iao_import.owl>)
 Import(<http://semanticscience.org/ontology/cheminf/imports/obi_import.owl>)
 Import(<http://semanticscience.org/ontology/cheminf/imports/omo_import.owl>)
