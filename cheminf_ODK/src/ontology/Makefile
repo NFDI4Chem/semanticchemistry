@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                b5752966316a39d9d8c832a4f8cdb878d8d8bfe68128e256ed29f8fde5f06caa
+CONFIG_HASH=                564df3ea6fc78ac8af0af5467a382db8549fcd075cc8d6eb8a257d6387b9e14a
 
 
 # ----------------------------------------
@@ -439,25 +439,12 @@ $(IMPORTDIR)/obi_import.owl: $(MIRRORDIR)/obi.owl
 	@echo "       This rule needs to be overwritten in cheminf.Makefile!"
 	@false
 
-## Module for ontology: chebi (slme)
+## Module for ontology: chebi (custom)
 ifeq ($(IMP_LARGE),true)
-$(IMPORTDIR)/chebi_import.owl: $(MIRRORDIR)/chebi.owl $(IMPORTDIR)/chebi_terms.txt $(IMPORTSEED) | all_robot_plugins
-	$(ROBOT) annotate --input $< --remove-annotations \
-		 odk:normalize --add-source true \
-		 extract --term-file $(IMPORTDIR)/chebi_terms.txt $(T_IMPORTSEED) \
-		         --copy-ontology-annotations true --force true \
-		         --individuals include \
-		         --method BOT \
-		 remove $(foreach p, $(ANNOTATION_PROPERTIES), --term $(p)) \
-		        --term rdfs:label \
-		        --term IAO:0000115 \
-		        --term OMO:0002000 \
-		        --term-file $(IMPORTDIR)/chebi_terms.txt $(T_IMPORTSEED) \
-		        --select complement --select annotation-properties \
-		 odk:normalize --base-iri http://semanticscience.org/ontology \
-		               --subset-decls true --synonym-decls true \
-		 repair --merge-axiom-annotations true \
-		 $(ANNOTATE_CONVERT_FILE)
+$(IMPORTDIR)/chebi_import.owl: $(MIRRORDIR)/chebi.owl
+	@echo "ERROR: You have configured chebi as a custom module;"
+	@echo "       This rule needs to be overwritten in cheminf.Makefile!"
+	@false
 endif # IMP_LARGE=true
 
 endif # IMP=true
