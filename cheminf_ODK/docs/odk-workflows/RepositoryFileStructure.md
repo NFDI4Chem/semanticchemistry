@@ -20,7 +20,7 @@ These are the current imports in CHEMINF
 | ro | http://purl.obolibrary.org/obo/ro.owl | slme |
 | omo | http://purl.obolibrary.org/obo/omo.owl | mirror |
 | iao | http://purl.obolibrary.org/obo/iao.owl | custom |
-| obi | http://purl.obolibrary.org/obo/obi.owl | custom |
+| obi | https://raw.githubusercontent.com/obi-ontology/obi/v2025-10-14/obi.owl | custom |
 | pato | http://purl.obolibrary.org/obo/pato.owl | slme |
 | pr | http://purl.obolibrary.org/obo/pr.owl | slme |
 | chebi | http://purl.obolibrary.org/obo/chebi.owl | custom |

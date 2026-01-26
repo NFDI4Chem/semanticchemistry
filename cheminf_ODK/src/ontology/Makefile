@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                5421edcd95fe5fb9d2ebc595f126333299cf77fbfb2e93f56229f2277eb03a0f
+CONFIG_HASH=                01f03557778c0c48dce74b6a93942d76646725843373c16ee15b2d1c3f4a1f02
 
 
 # ----------------------------------------
@@ -516,8 +516,7 @@ mirror-iao: | $(TMPDIR)
 .PHONY: mirror-obi
 .PRECIOUS: $(MIRRORDIR)/obi.owl
 mirror-obi: | $(TMPDIR)
-	curl -L $(OBOBASE)/obi/obi-base.owl --create-dirs -o $(TMPDIR)/obi-download.owl --retry 4 --max-time 200 && \
-	$(ROBOT) convert -i $(TMPDIR)/obi-download.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/obi-ontology/obi/v2025-10-14/obi.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: pato

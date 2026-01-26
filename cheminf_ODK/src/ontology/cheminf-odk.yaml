@@ -52,7 +52,8 @@ import_group:
     - id: iao
       module_type: custom
     - id: obi
-      use_base: true
+      mirror_from: https://raw.githubusercontent.com/obi-ontology/obi/v2025-10-14/obi.owl
+      # for why see: https://github.com/information-artifact-ontology/IAO/issues/296
       module_type: custom
     # - id: uo  # for why see: https://github.com/semanticchemistry/semanticchemistry/issues/72
     - id: pato
