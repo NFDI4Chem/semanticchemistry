@@ -19,6 +19,7 @@ Prefix(ontologies:=<http://www.semanticweb.org/ontologies/>)
 
 Ontology(<http://semanticscience.org/ontology/cheminf.owl>
 Import(<http://semanticscience.org/ontology/cheminf/imports/bfo_import.owl>)
+Import(<http://semanticscience.org/ontology/cheminf/imports/bodo-descriptor_import.owl>)
 Import(<http://semanticscience.org/ontology/cheminf/imports/chebi_import.owl>)
 Import(<http://semanticscience.org/ontology/cheminf/imports/go_import.owl>)
 Import(<http://semanticscience.org/ontology/cheminf/imports/iao_import.owl>)
@@ -4898,6 +4899,10 @@ AnnotationAssertion(<http://www.semanticweb.org/ontologies/cheminf.owl#short_nam
 AnnotationAssertion(rdfs:comment resource:CHEMINF_001546 "Pi electronegativity is given by X = a + b q + c ( q 2 ) , where a, b and c are Gasteiger Marsili parameters, and q is the sigma charge. Other short_name: elecPiA.")
 AnnotationAssertion(rdfs:label resource:CHEMINF_001546 "pi electronegativity"@en)
 SubClassOf(resource:CHEMINF_001546 resource:CHEMINF_000087)
+
+# Class: <http://www.blueobelisk.org/ontologies/chemoinformatics-algorithms/#Descriptor> (<http://www.blueobelisk.org/ontologies/chemoinformatics-algorithms/#Descriptor>)
+
+SubClassOf(<http://www.blueobelisk.org/ontologies/chemoinformatics-algorithms/#Descriptor> obo:IAO_0000027)
 
 
 ############################

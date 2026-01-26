@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                01f03557778c0c48dce74b6a93942d76646725843373c16ee15b2d1c3f4a1f02
+CONFIG_HASH=                74b1bf609c7809455a04b6622060cc7956bdbd42f0a651d1ade082c1d4ce7b9b
 
 
 # ----------------------------------------
@@ -187,7 +187,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  bfo ro omo iao obi pato pr chebi go
+IMPORTS =  bfo ro omo iao obi pato pr chebi go bodo-descriptor
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -551,6 +551,13 @@ endif
 mirror-go: | $(TMPDIR)
 	curl -L $(OBOBASE)/go/go-base.owl --create-dirs -o $(TMPDIR)/go-download.owl --retry 4 --max-time 200 && \
 	$(ROBOT) convert -i $(TMPDIR)/go-download.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: bodo-descriptor
+.PHONY: mirror-bodo-descriptor
+.PRECIOUS: $(MIRRORDIR)/bodo-descriptor.owl
+mirror-bodo-descriptor: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/semanticchemistry/semanticchemistry/main/ontology/bodo-descriptor.owl -o $(TMPDIR)/$@.owl
 
 
 $(MIRRORDIR)/%.owl: mirror-% | $(MIRRORDIR)
