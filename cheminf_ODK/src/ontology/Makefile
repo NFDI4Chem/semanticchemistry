@@ -10,7 +10,7 @@
 # More information: https://github.com/INCATools/ontology-development-kit/
 
 # Fingerprint of the configuration file when this Makefile was last generated
-CONFIG_HASH=                b5752966316a39d9d8c832a4f8cdb878d8d8bfe68128e256ed29f8fde5f06caa
+CONFIG_HASH=                74b1bf609c7809455a04b6622060cc7956bdbd42f0a651d1ade082c1d4ce7b9b
 
 
 # ----------------------------------------
@@ -187,7 +187,7 @@ all_main: $(MAIN_FILES)
 # ----------------------------------------
 
 
-IMPORTS =  bfo ro omo iao obi pato pr chebi
+IMPORTS =  bfo ro omo iao obi pato pr chebi go bodo-descriptor
 
 IMPORT_ROOTS = $(patsubst %, $(IMPORTDIR)/%_import, $(IMPORTS))
 IMPORT_OWL_FILES = $(foreach n,$(IMPORT_ROOTS), $(n).owl)
@@ -439,25 +439,12 @@ $(IMPORTDIR)/obi_import.owl: $(MIRRORDIR)/obi.owl
 	@echo "       This rule needs to be overwritten in cheminf.Makefile!"
 	@false
 
-## Module for ontology: chebi (slme)
+## Module for ontology: chebi (custom)
 ifeq ($(IMP_LARGE),true)
-$(IMPORTDIR)/chebi_import.owl: $(MIRRORDIR)/chebi.owl $(IMPORTDIR)/chebi_terms.txt $(IMPORTSEED) | all_robot_plugins
-	$(ROBOT) annotate --input $< --remove-annotations \
-		 odk:normalize --add-source true \
-		 extract --term-file $(IMPORTDIR)/chebi_terms.txt $(T_IMPORTSEED) \
-		         --copy-ontology-annotations true --force true \
-		         --individuals include \
-		         --method BOT \
-		 remove $(foreach p, $(ANNOTATION_PROPERTIES), --term $(p)) \
-		        --term rdfs:label \
-		        --term IAO:0000115 \
-		        --term OMO:0002000 \
-		        --term-file $(IMPORTDIR)/chebi_terms.txt $(T_IMPORTSEED) \
-		        --select complement --select annotation-properties \
-		 odk:normalize --base-iri http://semanticscience.org/ontology \
-		               --subset-decls true --synonym-decls true \
-		 repair --merge-axiom-annotations true \
-		 $(ANNOTATE_CONVERT_FILE)
+$(IMPORTDIR)/chebi_import.owl: $(MIRRORDIR)/chebi.owl
+	@echo "ERROR: You have configured chebi as a custom module;"
+	@echo "       This rule needs to be overwritten in cheminf.Makefile!"
+	@false
 endif # IMP_LARGE=true
 
 endif # IMP=true
@@ -522,15 +509,14 @@ mirror-omo: | $(TMPDIR)
 .PRECIOUS: $(MIRRORDIR)/iao.owl
 mirror-iao: | $(TMPDIR)
 	curl -L $(OBOBASE)/iao.owl --create-dirs -o $(TMPDIR)/iao-download.owl --retry 4 --max-time 200 && \
-	$(ROBOT) remove -i $(TMPDIR)/iao-download.owl --base-iri http://purl.obolibrary.org/obo/IAO --axioms external --preserve-structure false --trim false -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -i $(TMPDIR)/iao-download.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: obi
 .PHONY: mirror-obi
 .PRECIOUS: $(MIRRORDIR)/obi.owl
 mirror-obi: | $(TMPDIR)
-	curl -L $(OBOBASE)/obi/obi-base.owl --create-dirs -o $(TMPDIR)/obi-download.owl --retry 4 --max-time 200 && \
-	$(ROBOT) convert -i $(TMPDIR)/obi-download.owl -o $(TMPDIR)/$@.owl
+	$(ROBOT) convert -I https://raw.githubusercontent.com/obi-ontology/obi/v2025-10-14/obi.owl -o $(TMPDIR)/$@.owl
 
 
 ## ONTOLOGY: pato
@@ -557,6 +543,21 @@ mirror-chebi: | $(TMPDIR)
 	curl -L $(OBOBASE)/chebi.owl.gz --create-dirs -o $(MIRRORDIR)/chebi.owl.gz --retry 4 --max-time 200 && \
 	$(ROBOT) remove -i $(MIRRORDIR)/chebi.owl.gz --base-iri http://purl.obolibrary.org/obo/CHEBI --axioms external --preserve-structure false --trim false -o $(TMPDIR)/$@.owl
 endif
+
+
+## ONTOLOGY: go
+.PHONY: mirror-go
+.PRECIOUS: $(MIRRORDIR)/go.owl
+mirror-go: | $(TMPDIR)
+	curl -L $(OBOBASE)/go/go-base.owl --create-dirs -o $(TMPDIR)/go-download.owl --retry 4 --max-time 200 && \
+	$(ROBOT) convert -i $(TMPDIR)/go-download.owl -o $(TMPDIR)/$@.owl
+
+
+## ONTOLOGY: bodo-descriptor
+.PHONY: mirror-bodo-descriptor
+.PRECIOUS: $(MIRRORDIR)/bodo-descriptor.owl
+mirror-bodo-descriptor: | $(TMPDIR)
+	$(ROBOT) convert -I https://raw.githubusercontent.com/semanticchemistry/semanticchemistry/main/ontology/bodo-descriptor.owl -o $(TMPDIR)/$@.owl
 
 
 $(MIRRORDIR)/%.owl: mirror-% | $(MIRRORDIR)

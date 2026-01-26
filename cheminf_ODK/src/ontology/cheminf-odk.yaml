@@ -50,10 +50,10 @@ import_group:
     - id: omo
       module_type: mirror
     - id: iao
-      make_base: true
       module_type: custom
     - id: obi
-      use_base: true
+      mirror_from: https://raw.githubusercontent.com/obi-ontology/obi/v2025-10-14/obi.owl
+      # for why see: https://github.com/information-artifact-ontology/IAO/issues/296
       module_type: custom
     # - id: uo  # for why see: https://github.com/semanticchemistry/semanticchemistry/issues/72
     - id: pato
@@ -64,3 +64,8 @@ import_group:
       is_large: true
       use_gzipped: true
       make_base: true
+      module_type: custom
+    - id: go
+      use_base: true
+    - id: bodo-descriptor
+      mirror_from: https://raw.githubusercontent.com/semanticchemistry/semanticchemistry/main/ontology/bodo-descriptor.owl

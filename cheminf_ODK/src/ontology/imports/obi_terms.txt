@@ -1,2 +1,5 @@
-http://purl.obolibrary.org/obo/OBI_0000011 # planned process
-http://purl.obolibrary.org/obo/OBI_0000312 # is specified output of
+http://purl.obolibrary.org/obo/OBI_0000011  # planned process
+http://purl.obolibrary.org/obo/OBI_0000312  # is specified output of
+
+# Terms from PR ontology were imported via OBI due to PR's huge size.
+http://purl.obolibrary.org/obo/PR_000000001 # protein
