@@ -29,14 +29,14 @@ $(IMPORTDIR)/obi_import.owl: $(MIRRORDIR)/obi.owl $(IMPORTDIR)/obi_terms.txt \
 		 $(ANNOTATE_CONVERT_FILE)
 
 # IAO import module
-$(IMPORTDIR)/iao_import.owl: $(MIRRORDIR)/iao.owl $(IMPORTDIR)/iao_terms.txt \
-			   $(IMPORTSEED) | all_robot_plugins
+$(IMPORTDIR)/iao_import.owl: $(MIRRORDIR)/iao.owl $(IMPORTDIR)/iao_terms.txt $(IMPORTSEED) | all_robot_plugins
 	$(ROBOT) annotate --input $< --remove-annotations \
 		 odk:normalize --add-source true \
 		 extract --term-file $(IMPORTDIR)/iao_terms.txt $(T_IMPORTSEED) \
 		         --force true --copy-ontology-annotations true \
 		         --individuals exclude \
 		         --method BOT \
+		 remove -T $(IMPORTDIR)/iao_remove_list.txt --select "self descendants instances" --signature true \
 		 remove $(foreach p, $(ANNOTATION_PROPERTIES), --term $(p)) \
 		        --term-file $(IMPORTDIR)/iao_terms.txt $(T_IMPORTSEED) \
 		        --select complement --select annotation-properties \
